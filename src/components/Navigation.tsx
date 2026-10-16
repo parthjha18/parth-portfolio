@@ -15,14 +15,18 @@ const sections = [
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      return localStorage.getItem("theme") !== "light";
+    } catch {
+      return true;
+    }
+  });
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    // Set initial theme
-    document.documentElement.classList.remove("light");
-    localStorage.setItem("theme", "dark");
-  }, []);
+    document.documentElement.classList.toggle("light", !isDark);
+  }, [isDark]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -44,13 +48,9 @@ export default function Navigation() {
 
   const toggleTheme = () => {
     setIsDark(!isDark);
-    if (isDark) {
-      document.documentElement.classList.add("light");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.remove("light");
-      localStorage.setItem("theme", "dark");
-    }
+    try {
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+    } catch {}
   };
 
   const scrollTo = (id: string) => {
@@ -66,10 +66,9 @@ export default function Navigation() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "border-b border-border/50 bg-[#0a0a0f]/80 backdrop-blur-xl"
+            ? "border-b border-border/50 bg-bg/80 backdrop-blur-xl"
             : "bg-transparent"
         }`}
-        style={{ backgroundColor: scrolled ? "rgba(10,10,15,0.8)" : "transparent" }}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           {/* Logo */}

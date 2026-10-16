@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const bootLines = [
@@ -12,9 +12,9 @@ const bootLines = [
   { text: "> Verifying credentials... OK", delay: 1800 },
   { text: "", delay: 2100, isDivider: true },
   { text: "╔══════════════════════════════════╗", delay: 2200 },
-  { text: "║    PARTH — SYSTEM v1.0.0         ║", delay: 2300 },
+  { text: "║    PARTH — SYSTEM v2.0.0         ║", delay: 2300 },
   { text: "║    Full-Stack Developer          ║", delay: 2400 },
-  { text: "║    ML Engineer                   ║", delay: 2500 },
+  { text: "║    AI Engineer                   ║", delay: 2500 },
   { text: "╚══════════════════════════════════╝", delay: 2600 },
   { text: "", delay: 2700, isDivider: true },
   { text: "SYSTEM READY. ENTERING PORTFOLIO...", delay: 2800 },
@@ -28,21 +28,28 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
   const [visibleLines, setVisibleLines] = useState<number>(0);
   const [done, setDone] = useState(false);
 
+  const onCompleteRef = useRef(onComplete);
   useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
     bootLines.forEach((line, i) => {
-      setTimeout(() => setVisibleLines(i + 1), line.delay);
+      timers.push(setTimeout(() => setVisibleLines(i + 1), line.delay));
     });
 
     const total = bootLines[bootLines.length - 1].delay + 1200;
-    setTimeout(() => {
-      setDone(true);
-      setTimeout(onComplete, 800);
-    }, total);
+    timers.push(
+      setTimeout(() => {
+        setDone(true);
+        timers.push(setTimeout(() => onCompleteRef.current(), 800));
+      }, total)
+    );
 
-    return () => {
-      // cleanup handled by component unmount
-    };
-  }, [onComplete]);
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   return (
     <AnimatePresence>

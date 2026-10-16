@@ -2,33 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-function getCyanRgb(): string {
-  if (typeof document === "undefined") return "0, 240, 255";
-  return (
-    getComputedStyle(document.documentElement)
-      .getPropertyValue("--accent-cyan-rgb")
-      .trim() || "0, 240, 255"
-  );
-}
+const cyan = (percent: number) =>
+  `color-mix(in srgb, var(--accent-cyan) ${percent}%, transparent)`;
 
 export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [hoverText, setHoverText] = useState("");
   const [visible, setVisible] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const cyanRgb = useRef("0, 240, 255");
-
-  useEffect(() => {
-    cyanRgb.current = getCyanRgb();
-    const observer = new MutationObserver(() => {
-      cyanRgb.current = getCyanRgb();
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -40,7 +21,7 @@ export default function CustomCursor() {
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!visible) setVisible(true);
+      setVisible(true);
     };
     const leave = () => setVisible(false);
     const enter = () => setVisible(true);
@@ -72,9 +53,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseenter", enter);
       document.removeEventListener("mouseover", handleHover);
     };
-  }, [mouseX, mouseY, visible]);
-
-  const rgb = cyanRgb.current;
+  }, [mouseX, mouseY]);
 
   return (
     <>
@@ -103,17 +82,15 @@ export default function CustomCursor() {
           style={{
             width: hovered ? "60px" : "8px",
             height: hovered ? "60px" : "8px",
-            backgroundColor: hovered
-              ? `rgba(${rgb}, 0.2)`
-              : `rgba(${rgb}, 0.6)`,
+            backgroundColor: hovered ? cyan(20) : cyan(60),
             backdropFilter: hovered ? "blur(4px)" : "none",
-            border: hovered ? `1px solid rgba(${rgb}, 0.3)` : "none",
+            border: hovered ? `1px solid ${cyan(30)}` : "none",
           }}
         />
         {hoverText && (
           <span
             className="absolute text-[8px] font-mono font-semibold uppercase tracking-widest"
-            style={{ color: `rgba(${rgb}, 1)` }}
+            style={{ color: "var(--accent-cyan)" }}
           >
             {hoverText}
           </span>
