@@ -3,6 +3,8 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { achievements } from "@/lib/data";
 
+const icons = ["💻", "🔥", "🏆", "⚡", "☁️", "📚"];
+
 export default function Achievements() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -17,7 +19,7 @@ export default function Achievements() {
           className="mb-10"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-green">
-            // ACHIEVEMENTS
+            {"// ACHIEVEMENTS"}
           </div>
           <h2 className="text-3xl font-bold sm:text-4xl">
             Milestones.
@@ -35,7 +37,7 @@ export default function Achievements() {
             >
               {/* Icon */}
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-accent-green/20 bg-accent-green/10 text-lg">
-                {i === 0 ? "💻" : i === 1 ? "🏆" : "📚"}
+                {icons[i % icons.length]}
               </div>
               <p className="text-sm leading-relaxed text-text-primary">{achievement}</p>
 

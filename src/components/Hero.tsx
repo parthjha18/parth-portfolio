@@ -4,20 +4,21 @@ import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
 
 const codeSnippets = [
-  "class SystemBuilder { constructor() { this.skills = ['ML', 'FullStack']; } }",
-  "const Parth = { title: 'Developer & ML Engineer', location: 'Bangalore' };",
-  "function solve(n) { return n <= 1 ? n : solve(n-1) + solve(n-2); }",
-  'db.collection("projects").find({ type: "fullstack" }).sort({ impact: -1 })',
-  "model.fit(X_train, y_train, epochs=50, validation_split=0.2)",
-  'git commit -m "feat: build recommendation engine"',
-  "docker compose up --build -d && npm run dev",
-  "@app.post('/recommend') async def get_recommendations(user_id: str):",
-  "SELECT * FROM accommodations WHERE trust_score > 0.8 ORDER BY distance;",
+  "@GetMapping(\"/{shortCode}\") public ResponseEntity<Void> redirect(...)",
+  "const Parth = { title: 'Developer & AI Engineer', location: 'Bangalore' };",
+  "UPDATE urls SET click_count = click_count + 1 WHERE short_code = ?;",
+  "graph = StateGraph(IntakeState).add_node('validate', validate_docs)",
+  "redis.incr(`rl:${ip}:${minute}`)  // 60 req/min, fail open",
+  'git commit -m "feat: layered payment reconciliation agent"',
+  "docker compose up --build -d && ./mvnw spring-boot:run",
+  "@app.post('/analyze/compare') async def compare_policies(req: CompareReq):",
+  "if confidence < 0.75: defer_to_exception_classifier(record)",
   "const app = express(); app.use(cors(), json(), authMiddleware);",
 ];
 
+const scrambleChars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`".split("");
+
 function LetterScramble({ text, className = "" }: { text: string; className?: string }) {
-  const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`".split("");
   const [display, setDisplay] = useState(text);
   const [done, setDone] = useState(false);
 
@@ -37,7 +38,9 @@ function LetterScramble({ text, className = "" }: { text: string; className?: st
           .split("")
           .map((char, i) => {
             if (char === " ") return " ";
-            return frame > i ? char : chars[Math.floor(Math.random() * chars.length)];
+            return frame > i
+              ? char
+              : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
           })
           .join("")
       );
@@ -56,6 +59,12 @@ function LetterScramble({ text, className = "" }: { text: string; className?: st
 export default function Hero() {
   const [codeIndex, setCodeIndex] = useState(0);
   const codeRef = useRef<HTMLDivElement>(null);
+  const [streamRows] = useState(() =>
+    Array.from({ length: 40 }, () => ({
+      duration: 15 + Math.random() * 10,
+      offset: (Math.random() - 0.5) * 40,
+    }))
+  );
 
   // Rotating code snippets
   useEffect(() => {
@@ -73,14 +82,14 @@ export default function Hero() {
       {/* Code stream background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-[0.03]">
         <div className="mt-20 space-y-3 font-mono text-xs leading-relaxed text-accent-cyan">
-          {Array.from({ length: 40 }).map((_, i) => (
+          {streamRows.map((row, i) => (
             <div
               key={i}
               className="animate-code-scroll"
               style={{
                 animationDelay: `${i * 0.5}s`,
-                animationDuration: `${15 + Math.random() * 10}s`,
-                transform: `translateX(${(Math.random() - 0.5) * 40}px)`,
+                animationDuration: `${row.duration}s`,
+                transform: `translateX(${row.offset}px)`,
               }}
             >
               {codeSnippets[i % codeSnippets.length]}
@@ -98,7 +107,7 @@ export default function Hero() {
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-1.5 font-mono text-xs text-text-muted backdrop-blur-sm"
         >
           <span className="h-2 w-2 rounded-full bg-accent-green animate-pulse" />
-          SYSTEM ONLINE — BANGALORE, INDIA
+          SYSTEM ONLINE — {personalInfo.location.toUpperCase()}
         </motion.div>
 
         {/* Main headline */}
@@ -108,7 +117,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-4 text-5xl font-bold leading-tight sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          <span className="block">I'm{" "}
+          <span className="block">I&apos;m{" "}
             <span className="text-glow-cyan">
               <LetterScramble text={personalInfo.fullName} />
             </span>
@@ -147,7 +156,6 @@ export default function Hero() {
                 key={codeIndex}
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="text-text-primary"
               >

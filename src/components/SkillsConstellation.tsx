@@ -29,7 +29,7 @@ export default function SkillsConstellation() {
           className="mb-16"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-magenta">
-            // SKILLS
+            {"// SKILLS"}
           </div>
           <h2 className="text-4xl font-bold sm:text-5xl">
             Tech <span className="text-glow-magenta">constellation</span>.

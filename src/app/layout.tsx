@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Parth Jha — Full-Stack Developer & ML Engineer",
+  title: "Parth Jha — Full-Stack Developer & AI Engineer",
   description:
-    "Full-stack developer and ML engineer building systems where engineering meets intelligence. Based in Bangalore, India.",
+    "Java and full-stack developer building backend-heavy systems and agentic AI — Spring Boot, Redis, FastAPI, LangGraph. Based in Bangalore, India.",
   openGraph: {
-    title: "Parth Jha — Full-Stack Developer & ML Engineer",
+    title: "Parth Jha — Full-Stack Developer & AI Engineer",
     description:
-      "Building systems where engineering meets intelligence. Recommendation engines, geospatial platforms, and more.",
+      "Spring Boot services, payment reconciliation agents, RAG and recommendation engines. Based in Bangalore, India.",
     type: "website",
   },
 };

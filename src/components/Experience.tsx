@@ -60,7 +60,7 @@ export default function Experience() {
           className="mb-16"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-green">
-            // EXPERIENCE
+            {"// EXPERIENCE"}
           </div>
           <h2 className="text-4xl font-bold sm:text-5xl">
             Commit <span className="text-glow-cyan text-accent-green">log</span>.
@@ -115,7 +115,7 @@ export default function Experience() {
             <GitLogEntry
               hash="#hack"
               branch="hackathons"
-              date="2024 – 2025"
+              date="2024 – 2026"
             >
               <h3 className="mb-3 text-base font-semibold text-text-primary">Hackathons</h3>
               <div className="space-y-2">

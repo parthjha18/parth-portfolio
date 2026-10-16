@@ -51,14 +51,14 @@ export default function Contact() {
           className="mb-12 text-center"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-cyan">
-            // CONTACT
+            {"// CONTACT"}
           </div>
           <h2 className="text-4xl font-bold sm:text-5xl">
-            Let's{" "}
+            Let&apos;s{" "}
             <span className="text-glow-cyan">connect</span>.
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-text-muted">
-            I'm always open to interesting conversations, project collaborations, or just geeking out about systems and ML.
+            I&apos;m always open to interesting conversations, project collaborations, or just geeking out about backend systems and AI.
           </p>
         </motion.div>
 

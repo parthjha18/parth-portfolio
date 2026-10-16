@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { personalInfo, education } from "@/lib/data";
+import { personalInfo, education, stats } from "@/lib/data";
 
 const stagger = {
   hidden: { opacity: 0 },
@@ -31,7 +31,7 @@ export default function About() {
           className="mb-16"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-cyan">
-            // ABOUT_ME
+            {"// ABOUT_ME"}
           </div>
           <h2 className="text-4xl font-bold sm:text-5xl">
             Building at the{" "}
@@ -53,7 +53,7 @@ export default function About() {
               {personalInfo.about}
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-              {["Full-Stack", "ML Engineering", "System Design", "DSA"].map((tag) => (
+              {["Java", "Full-Stack", "Agentic AI", "System Design", "DSA"].map((tag) => (
                 <span
                   key={tag}
                   className="rounded-md border border-border bg-surface px-3 py-1 font-mono text-xs text-text-muted"
@@ -79,11 +79,11 @@ export default function About() {
               <div className="space-y-4">
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="font-mono text-sm text-text-muted">Status</span>
-                  <span className="font-mono text-sm text-accent-green">Active</span>
+                  <span className="font-mono text-sm text-accent-green">{stats.status}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="font-mono text-sm text-text-muted">Location</span>
-                  <span className="font-mono text-sm text-text-primary">Bengaluru, India</span>
+                  <span className="font-mono text-sm text-text-primary">{personalInfo.location}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="font-mono text-sm text-text-muted">Education</span>
@@ -91,11 +91,11 @@ export default function About() {
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="font-mono text-sm text-text-muted">GPA</span>
-                  <span className="font-mono text-sm text-accent-cyan">9.37 / 10</span>
+                  <span className="font-mono text-sm text-accent-cyan">{stats.gpa}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-mono text-sm text-text-muted">LeetCode</span>
-                  <span className="font-mono text-sm text-accent-magenta">300+ Solved</span>
+                  <span className="font-mono text-sm text-accent-magenta">{stats.leetcode}</span>
                 </div>
               </div>
             </div>

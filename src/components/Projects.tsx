@@ -138,10 +138,10 @@ export default function Projects() {
           className="mb-16"
         >
           <div className="mb-3 font-mono text-xs uppercase tracking-[0.3em] text-accent-magenta">
-            // PROJECTS
+            {"// PROJECTS"}
           </div>
           <h2 className="text-4xl font-bold sm:text-5xl">
-            Systems I've{" "}
+            Systems I&apos;ve{" "}
             <span className="text-glow-magenta">built</span>.
           </h2>
         </motion.div>
