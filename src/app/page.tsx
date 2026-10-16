@@ -31,6 +31,9 @@ const SkillsConstellation = dynamic(
 const Achievements = dynamic(() => import("@/components/Achievements"), {
   ssr: false,
 });
+const Suggestions = dynamic(() => import("@/components/Suggestions"), {
+  ssr: false,
+});
 const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
 
 export default function Home() {
@@ -57,6 +60,7 @@ export default function Home() {
           <Experience />
           <SkillsConstellation />
           <Achievements />
+          <Suggestions />
           <Contact />
         </main>
       </div>
