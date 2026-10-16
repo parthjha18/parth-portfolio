@@ -53,7 +53,7 @@ export default function About() {
               {personalInfo.about}
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-              {["Java", "Full-Stack", "Agentic AI", "System Design", "DSA"].map((tag) => (
+              {["Java", "Full-Stack", "Agentic AI", "Data Engineering", "System Design", "DSA"].map((tag) => (
                 <span
                   key={tag}
                   className="rounded-md border border-border bg-surface px-3 py-1 font-mono text-xs text-text-muted"

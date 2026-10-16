@@ -119,7 +119,7 @@ export default function Hero() {
         >
           <span className="block">I&apos;m{" "}
             <span className="text-glow-cyan">
-              <LetterScramble text={personalInfo.fullName} />
+              <LetterScramble text={personalInfo.name} />
             </span>
           </span>
           <span className="block mt-2 text-2xl sm:text-3xl md:text-4xl text-text-muted">

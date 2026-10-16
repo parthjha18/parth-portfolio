@@ -82,8 +82,7 @@ export default function CustomCursor() {
           style={{
             width: hovered ? "60px" : "8px",
             height: hovered ? "60px" : "8px",
-            backgroundColor: hovered ? cyan(20) : cyan(60),
-            backdropFilter: hovered ? "blur(4px)" : "none",
+            backgroundColor: hovered ? cyan(8) : cyan(60),
             border: hovered ? `1px solid ${cyan(30)}` : "none",
           }}
         />

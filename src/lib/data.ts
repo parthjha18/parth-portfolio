@@ -7,7 +7,7 @@ export const personalInfo = {
   tagline: "Full-Stack Developer & AI Engineer",
   statement:
     "I build backend-heavy full-stack systems — from Spring Boot services and payment reconciliation to agentic AI that reads real-world documents.",
-  about: `I'm a pre-final year Information Science and Engineering student at CMR Institute of Technology, Bengaluru (graduating 2027), currently interning at Proential. Java is my primary language, and I like building systems that hold up in the real world: a Redis-backed URL shortener with rate limiting, a 4-layer payment reconciliation agent for the Razorpay Buildathon, and a LangGraph-powered insurance coordination platform. Outside of projects, I've solved 439+ problems on LeetCode and I'm currently digging into system design and SQL optimization. I think in systems, not just pages.`,
+  about: `I'm a final year Information Science and Engineering student at CMR Institute of Technology, Bengaluru (graduating 2027), currently working as a Software Engineering Intern at Prudential Technological Services India, where I migrate finance reporting from IBM Cognos to Databricks. Java is my primary language, and I like building systems that hold up in the real world: a Redis-backed URL shortener with rate limiting, a B2B sales-ops platform that reached the Odoo Hackathon finals, and a LangGraph-powered insurance coordination platform. I've solved 439+ problems on LeetCode, and these days I'm exploring cloud, system design, Databricks, PySpark, Azure Data Factory and SQL. I think in systems, not just pages.`,
   links: {
     linkedin: "https://www.linkedin.com/in/parth1810/",
     github: "https://github.com/parthjha18",
@@ -16,7 +16,7 @@ export const personalInfo = {
 };
 
 export const stats = {
-  status: "Interning at Proential",
+  status: "Interning at Prudential",
   gpa: "9.41 / 10",
   leetcode: "439+ Solved",
 };
@@ -47,11 +47,30 @@ export const education = [
 
 export const experience = [
   {
-    role: "Intern",
-    company: "Proential",
-    period: "Present",
-    description: ["Currently interning at Proential"],
-    tech: [] as string[],
+    role: "Software Engineering Intern",
+    company: "Prudential Technological Services India",
+    period: "Jul 2026 – Present",
+    description: [
+      "Value Creation Centre, Performance Management team (Bangalore) — migrating Finance MI reporting from IBM Cognos to Databricks",
+      "Reverse-engineered Cognos XML report definitions into SQL and built Databricks dashboards (Net Revenue by Client, Asia Life, FUM Flows) with KPI filters and local-currency value aggregation",
+      "Reconciled and validated KPIs, flagging mismatches across business units; traced KPIs from raw layer through gold-layer facts/dimensions to wrapper-layer rollups (star vs. snowflake schema)",
+      "Wrote a Python script to extract key-value pairs from Cognos XML, and documented the time saved using AI assistance versus manual work",
+      "Lead React developer on a 6–8 week Reference Data Management PoC deployed on Databricks Apps (React, TypeScript, Tailwind, Express, Lakebase Postgres) with maker/checker/admin roles via Entra ID; turned wireframes into a ~37-day Jira work plan",
+      "Built a personal Databricks Free Edition sandbox (Lakebase Postgres + React/TS Databricks App) to self-learn for the PoC, and now helping document Azure Data Factory pipelines for another team",
+    ],
+    tech: [
+      "Databricks",
+      "SQL",
+      "Delta Lake",
+      "IBM Cognos",
+      "Python",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Express",
+      "Azure Data Factory",
+      "Jira",
+    ],
   },
   {
     role: "Frontend Developer Intern",
@@ -67,6 +86,31 @@ export const experience = [
 ];
 
 export const projects = [
+  {
+    title: "DealFlow360",
+    subtitle: "Odoo Hackathon 2026 finalist · B2B sales-operations platform",
+    problem:
+      "B2B sales teams lose control of discounts and risk once a quote leaves the sales rep — approvals are ad hoc, negotiation history gets overwritten, and nobody sees a deal's health until it's too late.",
+    approach:
+      "Team project built as a backend-first Node.js, Express and PostgreSQL platform that governs a deal from quotation to payment. Discount tiers and risk bands drive configurable approval chains (Sales Rep → Manager → Finance), approved quotes are never edited in place — a change creates a new version — and a restricted customer portal supports line-level questions and counter-offers. It also covers fulfillment splitting, mixed one-time and subscription billing, and deal-health and anomaly dashboards. I contributed 30 commits across the team's backend and frontend.",
+    result:
+      "Selected for the final round of the Odoo Hackathon, held at Odoo's office in Gandhinagar, Gujarat.",
+    tech: [
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "REST APIs",
+    ],
+    metrics: [
+      { label: "Roles", value: "5" },
+      { label: "Screens", value: "18" },
+      { label: "Round", value: "Finals" },
+    ],
+    gradient: "from-fuchsia-500/20 to-purple-600/20",
+    accent: "fuchsia",
+  },
   {
     title: "Payment Reconciliation Agent",
     subtitle: "Razorpay Buildathon 2026 · Track 04: AI Finance Controller",
@@ -252,6 +296,11 @@ export const certifications = [
 
 export const hackathons = [
   {
+    name: "Odoo Hackathon 2026",
+    achievement:
+      "Selected for the final round, held at Odoo's office in Gandhinagar, Gujarat — built DealFlow360, a B2B sales-operations platform",
+  },
+  {
     name: "Razorpay Buildathon 2026",
     achievement:
       "Participated in Track 04 (AI Finance Controller) — built a multi-source payment reconciliation agent with layered deterministic + AI matching",
@@ -274,7 +323,7 @@ export const hackathons = [
 export const achievements = [
   "Solved 439+ problems on LeetCode, including 63 Hard",
   "Earned the 200 Days, 100 Days and 50 Days badges on LeetCode in 2026",
-  "Took part in the Razorpay Buildathon 2026 and built a four-layer payment reconciliation agent",
+  "Selected for the final round of the Odoo Hackathon 2026 at Odoo, Gandhinagar",
   "Advanced to Round 2 of the GHCI'25 GenAI Hackathon",
   "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
   "Secured 10 SGPA in 3rd semester",
@@ -283,8 +332,8 @@ export const achievements = [
 export const skills = {
   "Languages": ["Java", "Python", "JavaScript", "TypeScript", "SQL", "C"],
   "Web": ["HTML", "CSS", "REST APIs", "Tailwind CSS"],
-  "Frameworks": ["Spring Boot", "ReactJS", "Node.js", "Express.js", "FastAPI", "Flask", "JWT"],
-  "Databases": ["MySQL", "PostgreSQL", "MongoDB", "Redis", "Supabase", "ChromaDB"],
+  "Frameworks": ["Spring Boot", "ReactJS", "Node.js", "Express.js", "FastAPI", "Flask", "PySpark", "JWT"],
+  "Databases": ["MySQL", "PostgreSQL", "MongoDB", "Redis", "Databricks", "Delta Lake", "Supabase", "ChromaDB"],
   "ML/AI": [
     "LangGraph",
     "RAG",
@@ -302,6 +351,9 @@ export const skills = {
     "GitHub Actions",
     "Docker",
     "AWS",
+    "Azure Data Factory",
+    "IBM Cognos",
+    "Jira",
     "Postman",
     "JUnit",
     "Mockito",
